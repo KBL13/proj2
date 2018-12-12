@@ -37,14 +37,14 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     String name;
-    String address;
+    String city;
     String email;
     String mobile;
     String password;
     String reEnterPassword;
 
     @BindView(R.id.input_name) EditText _nameText;
-    @BindView(R.id.input_address) EditText _addressText;
+    @BindView(R.id.input_city) EditText _cityText;
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_mobile) EditText _mobileText;
     @BindView(R.id.input_password) EditText _passwordText;
@@ -84,7 +84,7 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.show();
 
         name = _nameText.getText().toString();
-        address = _addressText.getText().toString();
+        city = _cityText.getText().toString();
         email = _emailText.getText().toString();
         mobile = _mobileText.getText().toString();
         password = _passwordText.getText().toString();
@@ -94,7 +94,7 @@ public class SignupActivity extends AppCompatActivity {
         rent_user.put("name", name);
         rent_user.put("password", password);
         rent_user.put("email", email);
-        rent_user.put("address", address);
+        rent_user.put("city", city);
         rent_user.put("mobile", mobile);
 
         // TODO: Implement your own signup logic here.
@@ -168,12 +168,12 @@ public class SignupActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String name = _nameText.getText().toString();
-        String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        name = _nameText.getText().toString();
+        city = _cityText.getText().toString();
+        email = _emailText.getText().toString();
+        mobile = _mobileText.getText().toString();
+        password = _passwordText.getText().toString();
+        reEnterPassword = _reEnterPasswordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
             _nameText.setError("at least 3 characters");
@@ -182,11 +182,11 @@ public class SignupActivity extends AppCompatActivity {
             _nameText.setError(null);
         }
 
-        if (address.isEmpty()) {
-            _addressText.setError("Enter Valid Address");
+        if (city.isEmpty()) {
+            _cityText.setError("Enter Valid City");
             valid = false;
         } else {
-            _addressText.setError(null);
+            _cityText.setError(null);
         }
 
 
