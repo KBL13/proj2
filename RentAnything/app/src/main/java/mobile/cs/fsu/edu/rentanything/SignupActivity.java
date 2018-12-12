@@ -9,8 +9,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,15 +44,17 @@ public class SignupActivity extends AppCompatActivity {
     String mobile;
     String password;
     String reEnterPassword;
+    String Location;
+
 
     @BindView(R.id.input_name) EditText _nameText;
-    @BindView(R.id.input_city) EditText _cityText;
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_mobile) EditText _mobileText;
     @BindView(R.id.input_password) EditText _passwordText;
     @BindView(R.id.input_reEnterPassword) EditText _reEnterPasswordText;
     @BindView(R.id.btn_signup) Button _signupButton;
-    
+    @BindView(R.id.locationspinner) Spinner _locationspinner;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +62,20 @@ public class SignupActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+        ArrayAdapter<CharSequence> adapter =
+                ArrayAdapter.createFromResource(this,
+                        R.array.locations,
+                        android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
+
+
+        _locationspinner.setAdapter(adapter);
+
+        _locationspinner.setPrompt("Select Location");
+
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +102,11 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.show();
 
         name = _nameText.getText().toString();
-        city = _cityText.getText().toString();
         email = _emailText.getText().toString();
         mobile = _mobileText.getText().toString();
         password = _passwordText.getText().toString();
         reEnterPassword = _reEnterPasswordText.getText().toString();
+        Location = _locationspinner.getSelectedItem().toString();
 
         final Map<String, Object> rent_user = new HashMap<>();
         rent_user.put("name", name);
@@ -96,6 +114,7 @@ public class SignupActivity extends AppCompatActivity {
         rent_user.put("email", email);
         rent_user.put("city", city);
         rent_user.put("mobile", mobile);
+        rent_user.put("location", Location);
 
         // TODO: Implement your own signup logic here.
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -169,7 +188,6 @@ public class SignupActivity extends AppCompatActivity {
         boolean valid = true;
 
         name = _nameText.getText().toString();
-        city = _cityText.getText().toString();
         email = _emailText.getText().toString();
         mobile = _mobileText.getText().toString();
         password = _passwordText.getText().toString();
@@ -180,13 +198,6 @@ public class SignupActivity extends AppCompatActivity {
             valid = false;
         } else {
             _nameText.setError(null);
-        }
-
-        if (city.isEmpty()) {
-            _cityText.setError("Enter Valid City");
-            valid = false;
-        } else {
-            _cityText.setError(null);
         }
 
 

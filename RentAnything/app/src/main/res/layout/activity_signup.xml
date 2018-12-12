@@ -15,11 +15,14 @@
 
         <ImageView android:src="@drawable/re_logo"
             android:layout_width="wrap_content"
-            android:layout_height="76dp"
-            android:layout_marginBottom="28dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
         <!-- Name Label -->
+
+
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:hint="Name" />
+
         </android.support.design.widget.TextInputLayout>
 
         <!-- Address Label -->
@@ -38,11 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_city"
+            <EditText android:id="@+id/input_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
-                android:hint="City" />
+                android:hint="Address" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -60,6 +64,16 @@
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Spinner
+                android:id="@+id/locationspinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
 
         <!-- mobile number -->
         <android.support.design.widget.TextInputLayout

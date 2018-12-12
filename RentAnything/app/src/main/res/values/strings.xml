@@ -3,4 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="locations">
+        <item>Tallahassee</item>
+        <item>Orlando</item>
+        <item>Tampa</item>
+        <item>Miami</item>
+    </string-array>
 </resources>
