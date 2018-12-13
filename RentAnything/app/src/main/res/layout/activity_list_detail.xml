@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     tools:context=".ListDetailActivity">
 
     <TextView
@@ -58,7 +59,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/_detailuser"
         android:minHeight="100dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/_detailmessage"

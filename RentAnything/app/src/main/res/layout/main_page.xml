@@ -28,12 +28,12 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Search for Items"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:hint="Search for Items"
         android:textSize="30dp" />
 
     <TextView
@@ -57,5 +57,15 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="false" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/_searchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/editText"
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="5dp"
+        android:text="Search" />
 
 </RelativeLayout>

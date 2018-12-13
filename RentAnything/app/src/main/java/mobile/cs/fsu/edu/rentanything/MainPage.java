@@ -44,7 +44,7 @@ public class MainPage extends AppCompatActivity {
 
     Button listingbutton;
     Button rentalbutton;
-
+    Button searchbutton;
     EditText search_item;
 
     @Override
@@ -76,6 +76,9 @@ public class MainPage extends AppCompatActivity {
         listingbutton = (Button)findViewById(R.id._listingbutton) ;
         rentalbutton = (Button)findViewById(R.id._rentalbutton) ;
         search_item = (EditText) findViewById(R.id.editText);
+        searchbutton = (Button)findViewById(R.id._searchbutton);
+
+
 
         FirebaseUser user = mAuth.getCurrentUser();
 
@@ -108,6 +111,15 @@ public class MainPage extends AppCompatActivity {
         lv.setAdapter(mAdapter);
 
 
+        searchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchtext = search_item.getText().toString();
+                Intent intent = new Intent(MainPage.this, SearchActivity.class);
+                intent.putExtra("Search",searchtext);
+                startActivity(intent);
+            }
+        });
 
          listingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
