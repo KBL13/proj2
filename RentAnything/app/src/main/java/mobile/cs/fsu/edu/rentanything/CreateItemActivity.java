@@ -99,7 +99,8 @@ public class CreateItemActivity extends AppCompatActivity {
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         User = document.getString("name");
-                       Phone = document.getString("mobile");
+                        Phone = document.getString("mobile");
+                        City = document.getString("city");
 
                         title = _titleText.getText().toString();
                         rate = Float.valueOf(_rateText.getText().toString());
@@ -113,6 +114,7 @@ public class CreateItemActivity extends AppCompatActivity {
                         list_item.put("User", User);
                         list_item.put("ListedBy", listedBy);
                         list_item.put("ListingID", "");
+                        list_item.put("Location", City);
                         list_item.put("RentedBy", null);
                         FirebaseFirestore database1 = FirebaseFirestore.getInstance();
                         database1.collection("Items")

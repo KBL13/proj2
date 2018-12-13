@@ -42,7 +42,6 @@ public class MyListingActivity extends AppCompatActivity {
         listbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the Signup activity
                 finish();
                 Intent intent = new Intent(getApplicationContext(), CreateItemActivity.class);
                 startActivity(intent);

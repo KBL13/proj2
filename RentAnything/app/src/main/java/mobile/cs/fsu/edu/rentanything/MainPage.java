@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,10 +40,12 @@ public class MainPage extends AppCompatActivity {
     String user_token;
 
     ListView lv;
-   TextView title;
+    TextView title;
 
-   Button listingbutton;
-   Button rentalbutton;
+    Button listingbutton;
+    Button rentalbutton;
+
+    EditText search_item;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class MainPage extends AppCompatActivity {
         title = (TextView)findViewById(R.id.titletext);
         listingbutton = (Button)findViewById(R.id._listingbutton) ;
         rentalbutton = (Button)findViewById(R.id._rentalbutton) ;
+        search_item = (EditText) findViewById(R.id.editText);
 
         FirebaseUser user = mAuth.getCurrentUser();
 
@@ -84,7 +88,7 @@ public class MainPage extends AppCompatActivity {
                     if (document.exists()) {
 
                         String titletext = document.getString("Location");
-
+                        SharedPrefManager.getInstance(getApplicationContext()).storeLocation(titletext);
                         title.setText("Listings for " + titletext + ": ");
 
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
@@ -98,8 +102,8 @@ public class MainPage extends AppCompatActivity {
         });
 
 
-
-
+        String this_location = SharedPrefManager.getInstance(MainPage.this).getLocation();
+        title.setText("Listings for " + this_location + ": ");
         mAdapter = new ItemArrayAdapter(MainPage.this,R.layout.row_object);
         lv.setAdapter(mAdapter);
 
@@ -108,9 +112,8 @@ public class MainPage extends AppCompatActivity {
          listingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the Signup activity
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MyListingActivity.class);
+
+                Intent intent = new Intent(MainPage.this, MyListingActivity.class);
                 startActivity(intent);
             }
         });
@@ -118,9 +121,8 @@ public class MainPage extends AppCompatActivity {
         rentalbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the Signup activity
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MyRentalActivity.class);
+
+                Intent intent = new Intent(MainPage.this, MyRentalActivity.class);
                 startActivity(intent);
             }
         });
@@ -159,7 +161,6 @@ public class MainPage extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
 
@@ -184,4 +185,6 @@ public class MainPage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

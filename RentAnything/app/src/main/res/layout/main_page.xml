@@ -33,7 +33,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:text="Search for Items"
+        android:hint="Search for Items"
         android:textSize="30dp" />
 
     <TextView
