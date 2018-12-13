@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "925190613984",
+    "firebase_url": "https://rentanything-ed433.firebaseio.com",
+    "project_id": "rentanything-ed433",
+    "storage_bucket": "rentanything-ed433.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925190613984:android:7f95e79b875b219f",
+        "android_client_info": {
+          "package_name": "edu.fsu.cs.mobile.rentanything"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925190613984-fp33rn2fkh5b7s061oif6mcb1h4mgng0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL_xymyBPhGZ0WdWQCLdkWOu1he32-Wlc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925190613984:android:fb4d2e9ba2fbc643",
+        "android_client_info": {
+          "package_name": "mobile.cs.fsu.edu.rentanything"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925190613984-b6pftbjjj7s9cbmvvl0kd85vh2s21iop.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mobile.cs.fsu.edu.rentanything",
+            "certificate_hash": "87abc2cc8bd9331893016906646e1da82c070fb6"
+          }
+        },
+        {
+          "client_id": "925190613984-r0ji27dr4lj6ugjq2kbs0q53rqflfade.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mobile.cs.fsu.edu.rentanything",
+            "certificate_hash": "463e053ba014cfcb5b8d94dbc288c7cb481931e0"
+          }
+        },
+        {
+          "client_id": "925190613984-fp33rn2fkh5b7s061oif6mcb1h4mgng0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL_xymyBPhGZ0WdWQCLdkWOu1he32-Wlc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925190613984-fp33rn2fkh5b7s061oif6mcb1h4mgng0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

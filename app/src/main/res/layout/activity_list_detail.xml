@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".ListDetailActivity">
+
+    <TextView
+        android:id="@+id/_detailtitle"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/_detaildescription"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="159dp"
+        android:text="TextView"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/listingImg"
+        android:layout_width="350dp"
+        android:layout_height="141dp"
+        app:srcCompat="?attr/actionModePasteDrawable" />
+
+    <TextView
+        android:id="@+id/_detailrate"
+        android:layout_width="150dp"
+        android:layout_height="34dp"
+        android:layout_below="@+id/_detailtitle"
+        android:layout_alignStart="@+id/_detailtitle"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailphone"
+        android:layout_width="188dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/_detailtitle"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="41dp"
+        android:layout_toRightOf="@+id/_detailrate"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailuser"
+        android:layout_width="191dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/_detailrate"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="-1dp"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailstatus"
+        android:layout_width="208dp"
+        android:layout_height="44dp"
+        android:layout_below="@+id/_detailrate"
+        android:layout_alignStart="@+id/_detailphone"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="-45dp"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detaildescription"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/_detailuser"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:minHeight="100dp"
+        android:text="TextView"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/_detailmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_detaildescription"
+        android:layout_alignStart="@+id/_detailphone"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="3dp"
+        android:text="Message User" />
+
+    <Button
+        android:id="@+id/_detaildelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_detaildescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginTop="3dp"
+        android:text="Delete Item" />
+</RelativeLayout>
