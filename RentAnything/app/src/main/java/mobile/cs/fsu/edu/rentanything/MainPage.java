@@ -29,6 +29,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 
 public class MainPage extends AppCompatActivity {
@@ -84,6 +87,13 @@ public class MainPage extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
 
+        final Map<String, Object> temp_user = new HashMap<>();
+        temp_user.put("token", user_token);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference mToken = db.collection("Users").document(user.getUid());
+        mToken.update("token",user_token);
+
         DocumentReference docRef = database.collection("Users").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -92,7 +102,7 @@ public class MainPage extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-                        String titletext = document.getString("city");
+                        String titletext = document.getString("location");
                         SharedPrefManager.getInstance(getApplicationContext()).storeLocation(titletext);
                         title.setText("Listings for " + titletext + ": ");
 

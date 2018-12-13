@@ -112,9 +112,9 @@ public class SignupActivity extends AppCompatActivity {
         rent_user.put("name", name);
         rent_user.put("password", password);
         rent_user.put("email", email);
-        rent_user.put("city", city);
         rent_user.put("mobile", mobile);
         rent_user.put("location", Location);
+        rent_user.put("token", " ");
 
         // TODO: Implement your own signup logic here.
         mAuth.createUserWithEmailAndPassword(email, password)
