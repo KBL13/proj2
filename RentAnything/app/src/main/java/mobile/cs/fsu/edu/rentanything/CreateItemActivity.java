@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,6 +40,9 @@ public class CreateItemActivity extends AppCompatActivity {
     String User;
     String City;
     String Phone;
+    String Userid;
+    String listedBy;
+    String rentedBy;
 
     @BindView(R.id.input_title) EditText _titleText;
     @BindView(R.id.input_rate) EditText _rateText;
@@ -82,15 +86,16 @@ public class CreateItemActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Item...");
         progressDialog.show();
 
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        final FirebaseFirestore database = FirebaseFirestore.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        DocumentReference docRef = database.collection("Users").document(user.getUid());
+        listedBy = user.getUid();
+        final DocumentReference docRef = database.collection("Users").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+                    final DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         User = document.getString("name");
@@ -107,21 +112,50 @@ public class CreateItemActivity extends AppCompatActivity {
                         list_item.put("Rate", rate);
                         list_item.put("Title", title);
                         list_item.put("User", User);
+                        list_item.put("ListedBy", listedBy);
+                        list_item.put("ListingID", "");
+                        list_item.put("RentedBy", "");
                         FirebaseFirestore database1 = FirebaseFirestore.getInstance();
-                        database1.collection("Items").document(title)
-                                .set(list_item)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        database1.collection("Items")
+                                .add(list_item)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.e(TAG, "DocumentSnapshot successfully written!");
+                                    public void onSuccess(final DocumentReference documentReference) {
+                                        final FirebaseFirestore database2 = FirebaseFirestore.getInstance();
+                                        final DocumentReference docRef2 = database2.collection("Items").document(documentReference.getId());
+                                        final String listingid = documentReference.getId();
+
+                                        docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                                    if (task.isSuccessful()) {
+                                                                                        if (document.exists()) {
+                                                                                            FirebaseFirestore database3 = FirebaseFirestore.getInstance();
+                                                                                            database3.collection("Items").document(documentReference.getId())
+                                                                                                    .update("ListingID", listingid);
+
+
+                                                                                        }
+
+                                                                                    }
+                                                                                }
+                                                                            });
+
+                                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Log.e(TAG, "Error writing document", e);
+                                        Log.w(TAG, "Error adding document", e);
                                     }
                                 });
+
+
+
+
+
+
 
                         Intent intent = new Intent(CreateItemActivity.this, MainPage.class);
                         startActivity(intent);
