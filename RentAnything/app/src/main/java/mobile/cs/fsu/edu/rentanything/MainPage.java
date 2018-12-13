@@ -55,23 +55,6 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
-
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                user_token = SharedPrefManager.getInstance(MainPage.this).getToken();
-            }
-        };
-
-        if(SharedPrefManager.getInstance(this).getToken()!= null)
-        {
-            user_token = SharedPrefManager.getInstance(MainPage.this).getToken();
-        }
-
-        Log.d("myfcmtokenshared", SharedPrefManager.getInstance(MainPage.this).getToken());
-        registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIdService.TOKEN_BROADCAST));
-
-
         mAuth = FirebaseAuth.getInstance();
         final FirebaseFirestore database = FirebaseFirestore.getInstance();
 
@@ -103,7 +86,6 @@ public class MainPage extends AppCompatActivity {
                     if (document.exists()) {
 
                         String titletext = document.getString("location");
-                        SharedPrefManager.getInstance(getApplicationContext()).storeLocation(titletext);
                         title.setText("Listings for " + titletext + ": ");
 
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
@@ -116,9 +98,7 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-
-        String this_location = SharedPrefManager.getInstance(MainPage.this).getLocation();
-        title.setText("Listings for " + this_location + ": ");
+        
         mAdapter = new ItemArrayAdapter(MainPage.this,R.layout.row_object);
         lv.setAdapter(mAdapter);
 
