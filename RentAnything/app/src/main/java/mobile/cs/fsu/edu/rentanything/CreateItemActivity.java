@@ -43,6 +43,7 @@ public class CreateItemActivity extends AppCompatActivity {
     String Userid;
     String listedBy;
     String rentedBy;
+    String Email;
 
     @BindView(R.id.input_title) EditText _titleText;
     @BindView(R.id.input_rate) EditText _rateText;
@@ -101,6 +102,7 @@ public class CreateItemActivity extends AppCompatActivity {
                         User = document.getString("name");
                         Phone = document.getString("mobile");
                         City = document.getString("city");
+                        Email = document.getString("email");
 
                         title = _titleText.getText().toString();
                         rate = Float.valueOf(_rateText.getText().toString());
@@ -116,6 +118,8 @@ public class CreateItemActivity extends AppCompatActivity {
                         list_item.put("ListingID", "");
                         list_item.put("Location", City);
                         list_item.put("RentedBy", null);
+                        list_item.put("Email", Email);
+
                         FirebaseFirestore database1 = FirebaseFirestore.getInstance();
                         database1.collection("Items")
                                 .add(list_item)

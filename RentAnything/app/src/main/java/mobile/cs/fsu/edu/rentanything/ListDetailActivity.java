@@ -31,6 +31,8 @@ public class ListDetailActivity extends AppCompatActivity {
     TextView detaildescription;
     Button messagebutton;
     Button deletebutton;
+    String user1;
+    String user2;
 
     private FirebaseAuth mAuth;
 
@@ -53,7 +55,7 @@ public class ListDetailActivity extends AppCompatActivity {
 
         final FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-       final FirebaseUser user = mAuth.getCurrentUser();
+        final FirebaseUser user = mAuth.getCurrentUser();
 
         final String ListID = getIntent().getStringExtra("ListID");
 
@@ -80,6 +82,18 @@ public class ListDetailActivity extends AppCompatActivity {
                         });
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MyListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        messagebutton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                user1 = user.getUid();
+                Intent intent = new Intent(getApplicationContext(),CreateMessageActivity.class);
+                intent.putExtra("sender",user1);
+                intent.putExtra("receiver",user2);
                 startActivity(intent);
             }
         });
@@ -113,11 +127,12 @@ public class ListDetailActivity extends AppCompatActivity {
                                 String listid = document.getString("ListingID");
                                 String status = document.getString("RentedBy");
                                 String username = document.getString("User");
+                                user2 = document.getString("ListedBy");
 
 
                                 detailtitle.setText(title);
-                              detailphone.setText(phone);
-                              detailrate.setText("$" + Float.toString(rate) + "/hr");
+                                detailphone.setText(phone);
+                                detailrate.setText("$" + Float.toString(rate) + "/hr");
 
                              if(status == null) {
                                  detailstatus.setText("Available");
