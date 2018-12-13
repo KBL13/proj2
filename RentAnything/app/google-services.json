@@ -54,6 +54,14 @@
           }
         },
         {
+          "client_id": "925190613984-r0ji27dr4lj6ugjq2kbs0q53rqflfade.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mobile.cs.fsu.edu.rentanything",
+            "certificate_hash": "463e053ba014cfcb5b8d94dbc288c7cb481931e0"
+          }
+        },
+        {
           "client_id": "925190613984-fp33rn2fkh5b7s061oif6mcb1h4mgng0.apps.googleusercontent.com",
           "client_type": 3
         }

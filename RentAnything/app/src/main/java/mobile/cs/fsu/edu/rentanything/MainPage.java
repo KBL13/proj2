@@ -1,6 +1,9 @@
 package mobile.cs.fsu.edu.rentanything;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,14 +29,28 @@ public class MainPage extends AppCompatActivity {
 
     private static final String TAG = "MainPage";
     private FirebaseAuth mAuth;
-
+    private BroadcastReceiver broadcastReceiver;
     private ItemArrayAdapter mAdapter;
+    String user_token;
 
     ListView lv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                user_token = SharedPrefManager.getInstance(MainPage.this).getToken();
+            }
+        };
+
+        if(SharedPrefManager.getInstance(this).getToken()!= null)
+        {
+            Log.d("myfcmtokenshared", SharedPrefManager.getInstance(this).getToken());
+        }
+        registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIdService.TOKEN_BROADCAST));
 
         Button _listbutton = findViewById(R.id.listbutton);
 
