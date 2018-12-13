@@ -1,5 +1,6 @@
 package mobile.cs.fsu.edu.rentanything;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -19,5 +20,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
         // Check if message contains a data payload.
         Log.d(TAG,"Notification Message Body: " + remoteMessage.getNotification().getBody());
+        notifyUser(remoteMessage.getFrom(), remoteMessage.getNotification().getBody());
+    }
+
+    public void notifyUser(String from, String notification){
+        MyNotificationManager myNotificationManager = new MyNotificationManager((getApplicationContext()));
+        myNotificationManager.showNotification(from,notification,new Intent(getApplicationContext(),MainPage.class));
+
     }
 }

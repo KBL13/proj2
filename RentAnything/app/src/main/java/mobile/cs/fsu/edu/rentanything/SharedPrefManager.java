@@ -32,6 +32,7 @@ public class SharedPrefManager {
     {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_ACCESS_TOKEN,token);
         editor.apply();
         return true;
     }
@@ -40,6 +41,7 @@ public class SharedPrefManager {
     {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME_test, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_ACCESS_LOCATION,location);
         editor.apply();
         return true;
     }
