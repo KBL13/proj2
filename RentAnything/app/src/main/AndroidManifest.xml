@@ -31,9 +31,6 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CreateItemActivity"
-            android:theme="@style/AppTheme.Dark" />
 
         <service android:name=".MyFirebaseInstanceIdService">
             <intent-filter>

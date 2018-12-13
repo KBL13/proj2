@@ -62,8 +62,10 @@ public class MainPage extends AppCompatActivity {
 
         if(SharedPrefManager.getInstance(this).getToken()!= null)
         {
-            Log.d("myfcmtokenshared", SharedPrefManager.getInstance(this).getToken());
+            user_token = SharedPrefManager.getInstance(MainPage.this).getToken();
         }
+
+        Log.d("myfcmtokenshared", SharedPrefManager.getInstance(MainPage.this).getToken());
         registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIdService.TOKEN_BROADCAST));
 
 
@@ -90,7 +92,7 @@ public class MainPage extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-                        String titletext = document.getString("Location");
+                        String titletext = document.getString("city");
                         SharedPrefManager.getInstance(getApplicationContext()).storeLocation(titletext);
                         title.setText("Listings for " + titletext + ": ");
 
