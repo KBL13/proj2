@@ -101,7 +101,7 @@ public class CreateItemActivity extends AppCompatActivity {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         User = document.getString("name");
                         Phone = document.getString("mobile");
-                        City = document.getString("city");
+                        City = document.getString("location");
                         Email = document.getString("email");
 
                         title = _titleText.getText().toString();
