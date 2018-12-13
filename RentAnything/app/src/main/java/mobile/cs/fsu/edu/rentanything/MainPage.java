@@ -159,13 +159,14 @@ public class MainPage extends AppCompatActivity {
                                 String phone = document.getString("Phone");
                                 float rate = document.getLong("Rate").floatValue();
                                 String description  = document.getString("Description");
+                                String listid = document.getString("ListingID");
 
                                 Item item = new Item();
                                 item.setTitle(title);
                                 item.setPhone(phone);
                                 item.setRate(rate);
                                 item.setDescription(description);
-
+                                item.setListID(listid);
                                 mAdapter.add(item);
                             }
                         } else {
