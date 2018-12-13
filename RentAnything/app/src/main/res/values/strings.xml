@@ -10,4 +10,5 @@
         <item>Tampa</item>
         <item>Miami</item>
     </string-array>
+    <string name="title_activity_list_detail">ListDetailActivity</string>
 </resources>

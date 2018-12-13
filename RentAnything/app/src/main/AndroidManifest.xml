@@ -3,6 +3,7 @@
     package="mobile.cs.fsu.edu.rentanything">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,13 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.Dark" ></activity>
-        <activity android:name=".SignupActivity" android:theme="@style/AppTheme.Dark" ></activity>
-        <activity android:name=".MainPage" android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".MainPage"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
+
         <activity android:name=".CreateItemActivity"
             android:theme="@style/AppTheme.Dark"></activity>
 
@@ -40,6 +48,14 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+
+        <activity
+            android:name=".CreateItemActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity android:name=".MyListingActivity" />
+        <activity android:name=".MyRentalActivity" />
+        <activity android:name=".ListDetailActivity"></activity>
 
     </application>
 

@@ -18,10 +18,15 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 
@@ -34,10 +39,16 @@ public class MainPage extends AppCompatActivity {
     String user_token;
 
     ListView lv;
+   TextView title;
+
+   Button listingbutton;
+   Button rentalbutton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+
 
         broadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -52,23 +63,67 @@ public class MainPage extends AppCompatActivity {
         }
         registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIdService.TOKEN_BROADCAST));
 
-        Button _listbutton = findViewById(R.id.listbutton);
+
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseFirestore database = FirebaseFirestore.getInstance();
+
 
         lv = (ListView)findViewById(R.id._itemlist);
+        title = (TextView)findViewById(R.id.titletext);
+        listingbutton = (Button)findViewById(R.id._listingbutton) ;
+        rentalbutton = (Button)findViewById(R.id._rentalbutton) ;
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        DocumentReference docRef = database.collection("Users").document(user.getUid());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        String titletext = document.getString("Location");
+
+                        title.setText("Listings for " + titletext + ": ");
+
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+
 
         mAdapter = new ItemArrayAdapter(MainPage.this,R.layout.row_object);
         lv.setAdapter(mAdapter);
 
-        _listbutton.setOnClickListener(new View.OnClickListener() {
 
+
+         listingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), CreateItemActivity.class);
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MyListingActivity.class);
                 startActivity(intent);
             }
         });
 
+        rentalbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MyRentalActivity.class);
+                startActivity(intent);
+            }
+        });
 
         populateList();
 

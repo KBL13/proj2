@@ -9,13 +9,22 @@
     tools:context=".MainPage">
 
     <Button
-        android:id="@+id/listbutton"
+        android:id="@+id/_listingbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/_rentalbutton"
+        android:layout_marginStart="48dp"
+        android:text="View My Listings" />
+
+    <Button
+        android:id="@+id/_rentalbutton"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/_itemlist"
-        android:layout_centerHorizontal="true"
-        android:text="Create Listing" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="47dp"
+        android:text="View My Rentals" />
 
     <EditText
         android:id="@+id/editText"
@@ -27,17 +36,26 @@
         android:text="Search for Items"
         android:textSize="30dp" />
 
+    <TextView
+        android:id="@+id/titletext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:textSize="25dp" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="416dp"
-        android:layout_below="@+id/editText">
+        android:layout_height="270dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="103dp">
 
         <ListView
             android:id="@+id/_itemlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="false" />
     </ScrollView>
 
 </RelativeLayout>

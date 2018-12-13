@@ -12,9 +12,18 @@ public class Item {
     private Float Rate;
     private String Title;
     private String User;
+    private String ListID;
 
     public String getDescription() {
         return Description;
+    }
+
+    public String getListID() {
+        return ListID;
+    }
+
+    public void setListID(String listID) {
+        ListID = listID;
     }
 
     public void setDescription(String description) {

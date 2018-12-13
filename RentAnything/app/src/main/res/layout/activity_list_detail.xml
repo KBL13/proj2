@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListDetailActivity">
+
+    <TextView
+        android:id="@+id/_detailtitle"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/_detailrate"
+        android:layout_width="150dp"
+        android:layout_height="34dp"
+        android:layout_below="@+id/_detailtitle"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailphone"
+        android:layout_width="188dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/_detailtitle"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="38dp"
+        android:layout_toRightOf="@+id/_detailrate"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailuser"
+        android:layout_width="191dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/_detailrate"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detailstatus"
+        android:layout_width="208dp"
+        android:layout_height="44dp"
+        android:layout_alignStart="@+id/_detailphone"
+        android:layout_below="@+id/_detailrate"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/_detaildescription"
+        android:layout_width="match_parent"
+        android:layout_height="186dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/_detailuser"
+        android:minHeight="100dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/_detailmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/_detailphone"
+        android:layout_below="@+id/_detaildescription"
+        android:text="Message User" />
+
+    <Button
+        android:id="@+id/_detaildelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/_detaildescription"
+        android:layout_marginStart="83dp"
+        android:text="Delete Item" />
+</RelativeLayout>

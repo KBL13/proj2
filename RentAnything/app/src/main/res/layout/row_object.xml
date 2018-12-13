@@ -37,4 +37,5 @@
         android:minHeight="100dp"
         android:text="TextView"
         android:textSize="17dp" />
+
 </RelativeLayout>

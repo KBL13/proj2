@@ -1,5 +1,6 @@
 package mobile.cs.fsu.edu.rentanything;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
         TextView ratetext;
         TextView phonetext;
         TextView descriptiontext;
+        Button deletebutton;
+        Button messagebutton;
     }
 
     @NonNull
@@ -45,6 +49,8 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
             viewHolder.ratetext = convertView.findViewById(R.id.ratetext);
             viewHolder.phonetext = convertView.findViewById(R.id.phonetext);
             viewHolder.descriptiontext = convertView.findViewById(R.id.descriptiontext);
+            viewHolder.deletebutton = convertView.findViewById(R.id._detaildelete);
+            viewHolder.messagebutton = convertView.findViewById(R.id._detailmessage);
             convertView.setTag(viewHolder);
         } else {
             // If row has been created, get viewHolder from tag
@@ -59,12 +65,19 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
         viewHolder.ratetext.setText(ratetext);
         viewHolder.phonetext.setText(phonetext);
         viewHolder.descriptiontext.setText(item.getDescription());
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Change textView color when row is clicked
                 // Let ArrayAdapter now that mObjects list has changed,
                 //  forces listview to update rows
+
+                String listid = item.getListID();
+                Intent intent = new Intent(getContext(), ListDetailActivity.class);
+                intent.putExtra("ListID",listid);
+                mContext.startActivity(intent);
+
                 notifyDataSetChanged();
             }
         });
@@ -75,6 +88,10 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
     @Override
     public int getCount() {
         return mObjects.size();
+    }
+
+    public void deleteItem(int position){
+        mObjects.remove(position);
     }
 
     @Nullable

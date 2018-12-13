@@ -101,7 +101,6 @@ public class CreateItemActivity extends AppCompatActivity {
                         User = document.getString("name");
                        Phone = document.getString("mobile");
 
-
                         title = _titleText.getText().toString();
                         rate = Float.valueOf(_rateText.getText().toString());
                         description = _descriptionText.getText().toString();
@@ -114,7 +113,7 @@ public class CreateItemActivity extends AppCompatActivity {
                         list_item.put("User", User);
                         list_item.put("ListedBy", listedBy);
                         list_item.put("ListingID", "");
-                        list_item.put("RentedBy", "");
+                        list_item.put("RentedBy", null);
                         FirebaseFirestore database1 = FirebaseFirestore.getInstance();
                         database1.collection("Items")
                                 .add(list_item)
@@ -156,7 +155,7 @@ public class CreateItemActivity extends AppCompatActivity {
 
 
 
-
+                        finish();
                         Intent intent = new Intent(CreateItemActivity.this, MainPage.class);
                         startActivity(intent);
                             return;
