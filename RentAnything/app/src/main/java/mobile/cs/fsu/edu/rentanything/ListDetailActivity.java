@@ -35,6 +35,7 @@ public class ListDetailActivity extends AppCompatActivity {
     TextView detaildescription;
     Button messagebutton;
     Button deletebutton;
+    Button returnbutton;
     String user1;
     String user2;
 
@@ -54,8 +55,10 @@ public class ListDetailActivity extends AppCompatActivity {
         detaildescription = (TextView)findViewById(R.id._detaildescription);
         messagebutton = (Button)findViewById(R.id._detailmessage);
         deletebutton = (Button)findViewById(R.id._detaildelete);
+        returnbutton = (Button) findViewById(R.id._detailreturn);
 
         deletebutton.setVisibility(View.INVISIBLE);
+        //returnbutton.setVisibility(View.INVISIBLE);
 
         final FirebaseFirestore database = FirebaseFirestore.getInstance();
 
@@ -99,6 +102,27 @@ public class ListDetailActivity extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 DocumentReference mToken = db.collection("Items").document(ListID);
                 mToken.update("RentedBy",user1);
+
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+                /*Intent intent_test = new Intent(ListDetailActivity.this,CreateMessageActivity.class);
+                intent_test.putExtra("sender",user1);
+                intent_test.putExtra("receiver",user2);
+                intent_test.putExtra("itemid",ListID);
+                startActivity(intent_test);*/
+            }
+        });
+
+        returnbutton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                user1 = user.getUid();
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                DocumentReference mToken = db.collection("Items").document(ListID);
+                mToken.update("RentedBy","");
 
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MainPage.class);

@@ -76,6 +76,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/_detaildescription"
-        android:layout_marginStart="83dp"
+        android:layout_marginStart="86dp"
         android:text="Delete Item" />
+
+    <Button
+        android:id="@+id/_detailreturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/_detaildelete"
+        android:text="Return Item" />
 </RelativeLayout>
