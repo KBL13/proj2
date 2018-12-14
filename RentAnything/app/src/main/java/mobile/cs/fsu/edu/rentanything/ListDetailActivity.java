@@ -17,9 +17,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ListDetailActivity extends AppCompatActivity {
     private static final String TAG = "ListDetailActivity";
@@ -91,10 +95,19 @@ public class ListDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user1 = user.getUid();
-                Intent intent_test = new Intent(ListDetailActivity.this,CreateMessageActivity.class);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                DocumentReference mToken = db.collection("Items").document(ListID);
+                mToken.update("RentedBy",user1);
+
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
+                /*Intent intent_test = new Intent(ListDetailActivity.this,CreateMessageActivity.class);
                 intent_test.putExtra("sender",user1);
                 intent_test.putExtra("receiver",user2);
-                startActivity(intent_test);
+                intent_test.putExtra("itemid",ListID);
+                startActivity(intent_test);*/
             }
         });
 

@@ -70,12 +70,12 @@ public class MainPage extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
 
-        final Map<String, Object> temp_user = new HashMap<>();
+        /*final Map<String, Object> temp_user = new HashMap<>();
         temp_user.put("token", user_token);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference mToken = db.collection("Users").document(user.getUid());
-        mToken.update("token",user_token);
+        mToken.update("token",user_token);*/
 
         DocumentReference docRef = database.collection("Users").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/_detailphone"
         android:layout_below="@+id/_detaildescription"
-        android:text="Message User" />
+        android:text="Rent Item" />
 
     <Button
         android:id="@+id/_detaildelete"

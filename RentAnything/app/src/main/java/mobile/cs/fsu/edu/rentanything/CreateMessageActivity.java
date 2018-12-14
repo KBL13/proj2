@@ -96,6 +96,21 @@ public class CreateMessageActivity extends AppCompatActivity{
 
                                 }
                             });
+
+                database.collection("Items").document(transaction).collection("messages").document(time)
+                        .set(letter)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
                     finish();
                     Intent intent = new Intent(getApplicationContext(), MyListingActivity.class);
                     startActivity(intent);
