@@ -39,6 +39,8 @@
         <activity android:name=".MyRentalActivity" />
         <activity android:name=".ListDetailActivity" />
         <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".CreateMessageActivity"></activity>
+        <activity android:name=".ViewMessagesActivity"></activity>
     </application>
 
 </manifest>

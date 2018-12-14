@@ -91,10 +91,10 @@ public class ListDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user1 = user.getUid();
-                Intent intent = new Intent(getApplicationContext(),CreateMessageActivity.class);
-                intent.putExtra("sender",user1);
-                intent.putExtra("receiver",user2);
-                startActivity(intent);
+                Intent intent_test = new Intent(ListDetailActivity.this,CreateMessageActivity.class);
+                intent_test.putExtra("sender",user1);
+                intent_test.putExtra("receiver",user2);
+                startActivity(intent_test);
             }
         });
 
